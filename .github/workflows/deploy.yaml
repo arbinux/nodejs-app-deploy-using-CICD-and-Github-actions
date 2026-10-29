@@ -5,7 +5,7 @@ on:
   push:
     branches: [main]
 
-jobs:
+jobs: 
   deploy:
     runs-on: ubuntu-latest
 
@@ -13,9 +13,9 @@ jobs:
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1
         with:
-          host: ${{ secrets.EC2_HOST }}
+          host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+          key: ${{ secrets.SSH_KEY }}
           script: |
             cd /root/nodejs-app-deploy-using-CICD-and-Github-actions
             git pull origin main
